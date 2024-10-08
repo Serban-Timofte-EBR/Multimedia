@@ -59,9 +59,23 @@
       console.log(b);
       console.log(c); // let este block scope
 
-      const sum = function () {};
+      console.log("Call before declaration");
+      f();
+      console.log(g); //undefined
+      // g();
 
-      function sum() {}
+      function f() {
+        console.log("f");
+      }
+
+      var g = () => {
+        // Equivalent to: let g = function() {
+        console.log("g");
+      };
+
+      console.log("Call after declaration");
+      f();
+      g();
     </script>
   </body>
 </html>
