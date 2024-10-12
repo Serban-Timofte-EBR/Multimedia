@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEMA 1 - Canvas</title>
+    <link rel="stylesheet" href="1_1100_Timofte_Serban.css">
+</head>
+<body>
+    <h1 id="main_title">Program de desenare raster folosind elementul canvas</h1>
+    <form id="canvas_form">
+        <input type="text" id="canvas_width" placeholder="1,2,3">
+        <button type="submit" id="canvas_submit">Deseneaza</button>
+    </form>
+    <canvas id="main_canvas">
+        Elementul canvas nu este suportat de browser-ul dumneavoastra.
+    </canvas>
+
+    <script src="1_1100_Timofte_Serban.js"></script>
+
+    <script>
+        "use strict";
+        const canvas = document.getElementById("main_canvas");
+        const barChar = new BarChart(canvas);
+    </script>
+</body>
+</html>
