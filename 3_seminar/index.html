@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Bar Chart</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" value="1,2,3" id="tb_values" />
+      <button id="btn_draw">Draw</button>
+    </form>
+    <canvas id="chart-canvas"> The canvas element is not supported. </canvas>
+
+    <script src="canvas-bar-chart-library.js"></script>
+    <script>
+      "use strict";
+      //const chartCanvas = document.getElementById('chart-canvas');
+      const chartCanvas = document.querySelector("#chart-canvas");
+      const barChart = new BarChart(chartCanvas);
+      //console.log(barChart.#canvas);
+      //   barChart.draw([1, 2, 3]);
+      document.getElementById("btn_draw").addEventListener("click", (e) => {
+        const tbValues = document
+          .getElementById("tb_values")
+          .value.split(",")
+          .map(Number);
+        barChart.draw(tbValues);
+        e.preventDefault();
+      });
+    </script>
+  </body>
+</html>
