@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Bar Chart</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" value="1,2,3" id="tb_values" />
+      <button id="btn_draw">Draw</button>
+      <button id="btn-download" type="button" disabled>Download</button>  <!-- Type button tine loc de e.preventDefault()-->
+    </form>
+    <canvas id="chart-canvas"> The canvas element is not supported. </canvas>
+
+    <script src="canvas-bar-chart-library.js"></script>
+    <script>
+      "use strict";
+      const chartCanvas = document.querySelector("#chart-canvas");
+      const barChart = new BarChart(chartCanvas);
+      const btnDownload = document.querySelector("#btn-download");
+
+      document.getElementById("btn_draw").addEventListener("click", (e) => {
+        const tbValues = document
+          .getElementById("tb_values")
+          .value.split(",")
+          .map(Number);
+
+        const options = {
+          drawOutline: false,
+          drawLabels: false,
+        }
+
+        barChart.draw(tbValues, options);
+        btnDownload.disabled = false;
+        e.preventDefault();
+      });
+
+      btnDownload.addEventListener("click", (e) => {
+        const dataUrl = chartCanvas.toDataURL("image/webp", 1); // JPEG este cu pierdere de calitate, PNG este fara pierdere de calitate
+        // console.log(dataUrl);
+        const anchor = document.createElement("a");
+        anchor.href = dataUrl;
+        anchor.download = "chart.webp"; // Schimbarea extensiei in .jpeg sau .png NU schimba type ul documentului
+        anchor.click();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 - Histrogram</title>
+</head>
+<body>
+    <canvas id="canvas-Histogram">
+        Canvas is not supported!
+    </canvas>
+    <canvas id="canvas-Image">
+        Canvas is not supported!
+    </canvas>
+
+    <script>
+        'use strict';
+        const canvasHistogram = document.getElementById('canvas-Histogram');
+        const canvasImage = document.getElementById('canvas-Image');
+
+        // Functionalitate de drag and drop - pentru a face drag and drop doar pe canvas pune canvasImage in loc de document
+        document.addEventListener('dragover', (e) => {
+            e.preventDefault();     // default deschide fisierul in a new tab
+        })
+
+        document.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const files = e.dataTransfer.files;
+            if(files.length > 0) {
+                const file = files[0];
+                console.log(file)
+            }
+        })
+    </script>
+</body>
+</html>
