@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Program de desenare raster folosind elementul canvas</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <h1>Canvas Drawing Project</h1>
+    <div class="commands">
+      <label for="tool">Unelte:</label>
+      <select id="tool">
+        <option value="ellipse">Elipsa</option>
+        <option value="rectangle">Dreptunghi</option>
+        <option value="line">Linie</option>
+      </select>
+
+      <label for="color">Culoare:</label>
+      <input type="color" id="color" value="#000000" />
+
+      <label for="thickness">Grosime linie:</label>
+      <input type="number" id="thickness" value="2" min="1" max="10" />
+
+      <button id="clear">Sterge desenul</button>
+    </div>
+
+    <canvas id="canvas" width="800" height="600">Canvas is not supported on your browser</canvas>
+
+    <button id="exp_png">Export PNG</button>
+    <button id="exp_svg">Exporta SVG</button>
+
+    <script src="scripts/drawing-library.js"></script>
+    <script src="scripts/selecting-tools-library.js"></script>
+  </body>
+</html>

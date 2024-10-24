@@ -1,0 +1,22 @@
+body {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.commands {
+  margin-bottom: 10px;
+}
+
+canvas {
+  border: 1px solid black;
+  display: block;
+  margin-top: 20px;
+}
+
+button {
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+.clear {
+  margin-left: 30px;
+}
