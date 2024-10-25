@@ -14,20 +14,24 @@
         <option value="ellipse">Elipsa</option>
         <option value="rectangle">Dreptunghi</option>
         <option value="line">Linie</option>
+        <option value="pencil">Creion</option>
       </select>
 
       <label for="color">Culoare:</label>
       <input type="color" id="color" value="#000000" />
 
-      <label for="thickness">Grosime linie:</label>
-      <input type="number" id="thickness" value="2" min="1" max="10" />
+      <label for="lineWidth">Grosime linie:</label>
+      <input type="number" id="lineWidth" value="2" min="1" max="10" />
+
+      <label for="backColor">Culoare de fundal:</label>
+      <input type="color" id="backColor" value="#ffffff" />
 
       <button id="clear">Sterge desenul</button>
     </div>
 
     <canvas id="canvas" width="800" height="600">Canvas is not supported on your browser</canvas>
 
-    <button id="exp_png">Export PNG</button>
+    <button id="expPNG">Export PNG</button>
     <button id="exp_svg">Exporta SVG</button>
 
     <script src="scripts/drawing-library.js"></script>

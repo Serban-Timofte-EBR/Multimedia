@@ -1,5 +1,6 @@
 document.querySelector('#tool').addEventListener('change', (e) => {
     tool = e.target.value
+    console.log(tool)
 })
 
 document.querySelector('#color').addEventListener('change', (e) => {

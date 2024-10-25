@@ -6,6 +6,7 @@ let startX, startY;
 let tool = "ellipse"; // default tool
 let color = "black"; // default color
 let lineWidth = 1; // The default line width
+let backColor = "white"; // The default background color
 
 let draws = [];
 
@@ -21,12 +22,22 @@ function getMouseCoord(canvas, e) {
   };
 }
 
+document.querySelector("#backColor").addEventListener("change", (e) => {
+  backColor = e.target.value;
+  canvas.style.backgroundColor = backColor;
+});
+
 // Start drawing
 canvas.addEventListener("mousedown", (e) => {
   drawing = true;
   const { x, y } = getMouseCoord(canvas, e);
   startX = x;
   startY = y;
+
+  if (tool === "pencil") {
+    context.beginPath();
+    context.moveTo(x, y);
+  }
 });
 
 // Draw
@@ -37,28 +48,35 @@ canvas.addEventListener("mousemove", (e) => {
 
   const { x, y } = getMouseCoord(canvas, e);
 
-  drawShapes();
-  context.beginPath();
-  context.strokeStyle = color;
-  context.lineWidth = lineWidth;
+  if (tool === "pencil") {
+    context.lineTo(x, y); 
+    context.strokeStyle = color;
+    context.lineWidth = lineWidth;
+    context.stroke();
+  } else {
+    drawShapes();
+    context.beginPath();
+    context.strokeStyle = color;
+    context.lineWidth = lineWidth;
 
-  if (tool === "ellipse") {
-    context.ellipse(
-      startX,
-      startY,
-      Math.abs(x - startX),
-      Math.abs(y - startY),
-      0,
-      0,
-      Math.PI * 2
-    );
-  } else if (tool === "rectangle") {
-    context.rect(startX, startY, x - startX, y - startY);
-  } else if (tool === "line") {
-    context.moveTo(startX, startY);
-    context.lineTo(x, y);
+    if (tool === "ellipse") {
+      context.ellipse(
+        startX,
+        startY,
+        Math.abs(x - startX),
+        Math.abs(y - startY),
+        0,
+        0,
+        Math.PI * 2
+      );
+    } else if (tool === "rectangle") {
+      context.rect(startX, startY, x - startX, y - startY);
+    } else if (tool === "line") {
+      context.moveTo(startX, startY);
+      context.lineTo(x, y);
+    }
+    context.stroke();
   }
-  context.stroke();
 });
 
 // Stop drawing
@@ -70,21 +88,26 @@ canvas.addEventListener("mouseup", (e) => {
 
   const { x, y } = getMouseCoord(canvas, e);
 
-  draws.push({
-    tool: tool,
-    startX: startX,
-    startY: startY,
-    endX: x,
-    endY: y,
-    color: color,
-    lineWidth: lineWidth,
-  });
+  if (tool !== "pencil") {
+    draws.push({
+      tool: tool,
+      startX: startX,
+      startY: startY,
+      endX: x,
+      endY: y,
+      color: color,
+      lineWidth: lineWidth,
+    });
 
-  drawShapes();
+    drawShapes();
+  }
 });
 
 function drawShapes() {
   context.clearRect(0, 0, canvas.width, canvas.height);
+
+  context.fillStyle = backColor;
+
   draws.forEach((shape) => {
     context.beginPath();
     context.strokeStyle = shape.color;
@@ -118,4 +141,14 @@ function drawShapes() {
 document.getElementById("clear").addEventListener("click", () => {
   context.clearRect(0, 0, canvas.width, canvas.height);
   draws = [];
+});
+
+const btn_save_png = document.querySelector("#expPNG");
+
+btn_save_png.addEventListener("click", (e) => {
+  const dataURL = canvas.toDataURL("image/png");
+  const anchor = document.createElement("a");
+  anchor.href = dataURL;
+  anchor.download = "canvas.png";
+  anchor.click();
 });
