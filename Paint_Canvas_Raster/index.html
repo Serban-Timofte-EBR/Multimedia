@@ -29,10 +29,35 @@
       <button id="clear">Sterge desenul</button>
     </div>
 
-    <canvas id="canvas" width="800" height="600">Canvas is not supported on your browser</canvas>
+    <canvas id="canvas" width="800" height="600"
+      >Canvas is not supported on your browser</canvas
+    >
 
     <button id="expPNG">Export PNG</button>
     <button id="exp_svg">Exporta SVG</button>
+
+    <h2>Lista elementelor desenate:</h2>
+    <ul id="shapes_list"></ul>
+
+    <p style="display: inline-block; margin-right: 10px">
+      <b>Introdu ID-ul elementului pe care vrei sa il stergi:</b>
+    </p>
+    <input type="number" , placeholder="ID" id="input_shape_id" style="display: inline-block; margin-right: 10px;"/>
+    <button id="submit_delete_id">Delete Shape</button>
+
+    <p>
+      <b>Introdu ID-ul elementului pe care vrei sa il modifici:</b>
+    </p>
+
+    <input style="margin: 10px;" type="number" placeholder="ID" id="modify_shape_id"/>
+    <input style="margin: 10px;" type="number" placeholder="Start X" id="modify_shape_startX" />
+    <input style="margin: 10px;" type="number" placeholder="Start Y" id="modify_shape_startY" />
+    <input style="margin: 10px;" type="number" placeholder="End X" id="modify_shape_endX" />
+    <input style="margin: 10px;" type="number" placeholder="End Y" id="modify_shape_endY" />
+    <input style="margin: 10px;" type="number" placeholder="Grosimea Liniei" id="modify_shape_line" />
+    <input style="margin: 10px;" type="color" placeholder="Culoarea" id="modify_shape_color" />
+
+    <button id="submit_modify_id">Edit Shape</button>
 
     <script src="scripts/drawing-library.js"></script>
     <script src="scripts/selecting-tools-library.js"></script>

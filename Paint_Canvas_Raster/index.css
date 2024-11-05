@@ -20,3 +20,20 @@ button {
 .clear {
   margin-left: 30px;
 }
+
+#submit_delete_id {
+  background-color: red;
+  color: whitesmoke;
+  border-radius: 10%;
+}
+
+#input_shape_id {
+  border-radius: 10%;
+}
+
+#submit_modify_id {
+  background-color: olivedrab;
+  color: whitesmoke;
+  display: inline-flex;
+  border-radius: 10%;
+}

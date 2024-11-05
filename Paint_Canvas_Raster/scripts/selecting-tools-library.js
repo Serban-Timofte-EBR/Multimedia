@@ -10,3 +10,4 @@ document.querySelector('#color').addEventListener('change', (e) => {
 document.querySelector('#lineWidth').addEventListener('change', (e) => {
     lineWidth = e.target.value
 });
+
