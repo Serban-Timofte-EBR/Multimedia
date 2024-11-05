@@ -1,39 +1,132 @@
 body {
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
 }
 
-.commands {
+h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px #aaa;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+p {
+  font-size: 1rem;
   margin-bottom: 10px;
 }
 
 canvas {
-  border: 1px solid black;
   display: block;
-  margin-top: 20px;
+  margin: 20px auto;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 button {
-  margin-top: 15px;
+  padding: 8px 15px;
+  background-color: #008cba;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
   margin-right: 10px;
 }
 
-.clear {
-  margin-left: 30px;
+button:hover {
+  background-color: #005f7a;
+}
+
+.commands {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.commands label {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #555;
+}
+
+#shapes_list {
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#shapes_list li {
+  padding: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+}
+
+#shapes_list li:last-child {
+  border-bottom: none;
 }
 
 #submit_delete_id {
-  background-color: red;
-  color: whitesmoke;
-  border-radius: 10%;
+  background-color: #e74c3c;
 }
 
-#input_shape_id {
-  border-radius: 10%;
+#submit_delete_id:hover {
+  background-color: #c0392b;
 }
 
 #submit_modify_id {
-  background-color: olivedrab;
-  color: whitesmoke;
-  display: inline-flex;
-  border-radius: 10%;
+  background-color: #27ae60;
+}
+
+#submit_modify_id:hover {
+  background-color: #1e8449;
+}
+
+#clear {
+  background-color: #f39c12;
+}
+
+#clear:hover {
+  background-color: #d68910;
+}
+
+#expPNG,
+#exp_svg {
+  margin: 20px auto;
+  display: inline-block;
+  background-color: #3498db;
+}
+
+#expPNG:hover,
+#exp_svg:hover {
+  background-color: #2980b9;
+}
+
+#exp_svg {
+  margin-left: 10px;
 }
