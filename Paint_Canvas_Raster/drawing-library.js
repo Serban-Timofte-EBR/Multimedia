@@ -64,7 +64,9 @@ function renderShapes() {
   ctx.fillRect(0, 0, canvas_element.width, canvas_element.height);
 
   shapes_array.forEach((shape) => {
-    if (shape.endX === null || shape.endY === null) return;
+    if (shape.endX === null || shape.endY === null) {
+      return;
+    }
 
     ctx.beginPath();
     ctx.strokeStyle = shape.color;
