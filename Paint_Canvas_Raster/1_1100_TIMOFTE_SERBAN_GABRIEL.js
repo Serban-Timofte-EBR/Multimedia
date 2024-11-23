@@ -308,3 +308,17 @@ btn_edit_shape.addEventListener("click", () => {
     window.alert("Please complete all fields to edit the shape.");
   }
 });
+
+// Handle user input interactions for selecting drawing tools, colors, and line width.
+document.querySelector("#tool").addEventListener("change", (e) => {
+  drawing_tool = e.target.value;
+  console.log(drawing_tool);
+});
+
+document.querySelector("#color").addEventListener("change", (e) => {
+  color_selected_by_user = e.target.value;
+});
+
+document.querySelector("#lineWidth").addEventListener("change", (e) => {
+  line_width_selected = e.target.value;
+});
