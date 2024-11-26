@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vectorial Graphics</title>
+    <style type="text/css">
+        .bar {
+            fill: yellow;
+        }
+
+        .bar:hover {
+            fill: orange;
+            transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Vectorial Graphics</h1>
+    <p>Vectorial graphics are images that are defined by mathematical equations. This means that they can be scaled to any size without losing quality. They are used in many applications, such as logos, icons, and illustrations.</p>
+    <p>There are many different file formats for vectorial graphics, such as SVG, EPS, and PDF. SVG is the most popular format for web graphics, as it can be easily embedded in HTML and styled with CSS.</p>
+    <p>Vectorial graphics are created using vectorial drawing software, such as Adobe Illustrator, CorelDRAW, or Inkscape. These programs allow designers to create complex shapes and designs using tools like the pen tool, shape tools, and gradients.</p>
+    <p>Vectorial graphics are often used in combination with raster graphics, which are images made up of pixels. Raster graphics are better suited for photographs and other detailed images, while vectorial graphics are better for simple shapes and designs.</p>
+    <p>Overall, vectorial graphics are a versatile and powerful tool for designers, allowing them to create high-quality images that can be scaled to any size.</p>
+
+    <h2>Examples of Vectorial Graphics</h2>
+    <div id="bar-chart"></div>
+
+    <script type="module">
+        import {BarChar} from './svg-bar-chart-library.js'
+
+        const barChar = new BarChar(document.getElementById('bar-chart'))
+
+        const data = [
+            ['Label 1', 1],
+            ['Label 2', 2],
+            ['Label 3', 3],
+        ]
+
+        barChar.draw(data)
+    </script>
+</body>
+</html>
