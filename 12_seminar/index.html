@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media player</title>
+  </head>
+  <body>
+    <video id="video" src="media/movie.mp4" controls style="display: none;">
+      The video element is not supported
+    </video>
+
+    <canvas id="canvas"> The canvas element is not supported </canvas>
+
+    <button id="btn-play-pause">Play</button>
+
+    <script>
+      const video = document.getElementById("video");
+      const btnPlayPause = document.getElementById("btn-play-pause");
+
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+
+      video.onloadedmetadata = function () {
+        [canvas.width, canvas.height] = [video.videoWidth, video.videoHeight];
+      };
+
+      btnPlayPause.addEventListener("click", () => {
+        if (video.paused) {
+          video.play();
+          drawFrame();
+          btnPlayPause.textContent = "Pause";
+        } else {
+          video.pause();
+          btnPlayPause.textContent = "Play";
+        }
+      });
+
+      function drawFrame() {
+        context.drawImage(video, 0, 0);
+        requestAnimationFrame(drawFrame);
+      }
+    </script>
+  </body>
+</html>

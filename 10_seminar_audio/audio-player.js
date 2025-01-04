@@ -13,26 +13,26 @@ export class AudioPlayer {
 
         btnPlayPause.addEventListener('click', () => {
             if (audio.paused) {
-                audio.play()
-                btnPlayPause.textContent = 'Pause'
+                audio.play();
+                btnPlayPause.textContent = 'Pause';
             } else {
-                audio.pause()
-                btnPlayPause.textContent = 'Play'
+                audio.pause();
+                btnPlayPause.textContent = 'Play';
             }
-        })
+        });
 
-        const spanCurrentTime = document.getElementById('current-time')
-        const spanDuration = document.getElementById('duration')
+        const spanCurrentTime = document.getElementById('current-time');
+        const spanDuration = document.getElementById('duration');
 
         this.#audio.addEventListener('loadedmetadata', () => {
-            spanDuration.textContent = this.#audio.duration.toFixed(2);
+            spanDuration.textContent = this.#formatTime(this.#audio.duration);
         });
 
         this.#audio.addEventListener('timeupdate', () => {
-            spanCurrentTime.textContent = this.#audio.currentTime.toFixed(2);
+            spanCurrentTime.textContent = this.#formatTime(this.#audio.currentTime);
         });
 
-        this.#audio.src="media/O Holy Night (Acoustic Version) (Instrumental Version) - Bird Of Figment.mp3"
+        this.#audio.src = "media/O Holy Night (Acoustic Version) (Instrumental Version) - Bird Of Figment.mp3";
     }
 
     loadTracks(tracks) {
@@ -48,5 +48,11 @@ export class AudioPlayer {
             });
             this.#ulTracks.appendChild(li);
         });
+    }
+
+    #formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.floor(seconds % 60);
+        return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
     }
 }
